@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.сontrollers.ControllerMainTeacher">
+   <children>
+      <Button fx:id="Dicpline" layoutX="101.0" layoutY="188.0" mnemonicParsing="false" text="Дисциплина" />
+      <Button fx:id="Uchebplan" layoutX="253.0" layoutY="188.0" mnemonicParsing="false" text="Учебный план" />
+      <Button fx:id="Otcenky" layoutX="405.0" layoutY="188.0" mnemonicParsing="false" text="Выставление оценок" />
+      <Label layoutX="332.0" layoutY="18.0" text="Главная страница">
+         <font>
+            <Font name="Rostov" size="31.0" />
+         </font>
+      </Label>
+      <Label fx:id="Login" layoutX="22.0" layoutY="20.0" text="Rostov" textAlignment="RIGHT">
+         <font>
+            <Font name="Rostov" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="family" layoutX="22.0" layoutY="37.0" text="Rostov" textAlignment="RIGHT">
+         <font>
+            <Font name="Rostov" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" layoutX="22.0" layoutY="54.0" text="Rostov" textAlignment="RIGHT">
+         <font>
+            <Font name="Rostov" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="otchestv" layoutX="22.0" layoutY="71.0" text="Rostov">
+         <font>
+            <Font name="Rostov" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
