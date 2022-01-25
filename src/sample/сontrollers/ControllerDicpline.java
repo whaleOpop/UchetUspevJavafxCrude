@@ -3,15 +3,20 @@ package sample.сontrollers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import sample.db.DBconnector;
 import sample.model.Dicpline;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class ControllerDicpline {
@@ -128,10 +133,24 @@ public class ControllerDicpline {
             }
             TableDicpline.getItems().clear();
             updateTable();
+
         });
         back.setOnAction(event -> {
 
-
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/MainTeacher.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            back.getScene().getWindow().hide();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Главное меню");
+            stage.show();
         });
 
 

@@ -81,6 +81,24 @@ public class ControllerMainTeacher {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setTitle("Дисциплина");
+            stage.show();
+            stage.setResizable(false);
+        });
+        Uchebplan.setOnAction(event -> {
+            Uchebplan.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/UchebPlan.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
             stage.setTitle("Студент");
             stage.show();
             stage.setResizable(false);

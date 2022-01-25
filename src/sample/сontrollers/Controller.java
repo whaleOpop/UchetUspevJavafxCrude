@@ -27,6 +27,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+
         student.setOnAction(event -> {
             student.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
