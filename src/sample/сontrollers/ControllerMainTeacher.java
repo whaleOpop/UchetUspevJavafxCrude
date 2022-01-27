@@ -33,7 +33,8 @@ public class ControllerMainTeacher {
     private Button Otcenky;
 
 
-
+    @FXML
+    private Button group;
     @FXML
     private Button Uchebplan;
 
@@ -82,6 +83,24 @@ public class ControllerMainTeacher {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Дисциплина");
+            stage.show();
+            stage.setResizable(false);
+        });
+        group.setOnAction(event -> {
+            group.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/GroupTeacher.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Студент");
             stage.show();
             stage.setResizable(false);
         });

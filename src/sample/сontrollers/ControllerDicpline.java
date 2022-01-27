@@ -55,13 +55,13 @@ public class ControllerDicpline {
 
             Connection cons;
             PreparedStatement prst;
-            if(ids==null){
+            if(namel.getText()==null){
                 System.out.println("error");
             }else {
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     cons = DriverManager.getConnection("jdbc:mysql://localhost/ucheb_prackt?serverTimezone=UTC", "root", "77322850nN%");
-                    prst = cons.prepareStatement("  DELETE FROM dicpline WHERE (`id` = '"+ids+"')");
+                    prst = cons.prepareStatement("  DELETE FROM dicpline WHERE (`nameDicpline` = '"+namel.getText()+"')");
                     prst.executeUpdate();
                     TableDicpline.getItems().clear();
                     updateTable();
@@ -87,7 +87,7 @@ public class ControllerDicpline {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 cons = DriverManager.getConnection("jdbc:mysql://localhost/ucheb_prackt?serverTimezone=UTC", "root", "77322850nN%");
-                prst = cons.prepareStatement(" UPDATE dicpline SET nameDicpline = '"+namel.getText()+"', `hours` = '"+hourl.getText()+"', `formaOtchensti` = '"+otchetl.getText()+"' WHERE (`id` = '"+ids+"')");
+                prst = cons.prepareStatement(" UPDATE dicpline SET nameDicpline = '"+namel.getText()+"', `hours` = '"+hourl.getText()+"', `formaOtchensti` = '"+otchetl.getText()+"' WHERE (`id` = '"+namel.getText()+"')");
                 prst.executeUpdate();
                 TableDicpline.getItems().clear();
                 updateTable();
@@ -108,7 +108,7 @@ public class ControllerDicpline {
         add.setOnAction(event -> {
             Connection cons;
             PreparedStatement prst;
-
+            PreparedStatement prstUcheb;
 
 
             try {
@@ -117,14 +117,15 @@ public class ControllerDicpline {
 
                 prst = cons.prepareStatement("INSERT INTO dicpline (nameDicpline, hours," +
                         " formaOtchensti, LoginTeacher) VALUES (  ?, ?, ?, " + "'" + ControllerLoginTeacher.Login + "'" + ")");
+                prstUcheb=cons.prepareStatement("INSERT INTO `ucheb_prackt`.`uchebplan` (`NameSpec`, `nameDicpline`, `Semectr`) VALUES ('"+"Название"+"', '"+namel.getText()+"', '1')");
 
 
 
                 prst.setString(1,   namel.getText() );
                 prst.setString(2, hourl.getText());
                 prst.setString(3, otchetl.getText());
-
                 prst.executeUpdate();
+                prstUcheb.executeUpdate();
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -165,16 +166,16 @@ public class ControllerDicpline {
             namel.setText(TableDicpline.getSelectionModel().getSelectedItem().getNameDicpline().toString());
             hourl.setText(TableDicpline.getSelectionModel().getSelectedItem().getHours().toString());
             otchetl.setText(TableDicpline.getSelectionModel().getSelectedItem().getFormaOtchensti().toString());
-            ids=TableDicpline.getSelectionModel().getSelectedItem().getId().toString();
+
         }
     }
     private void updateTable() {
         Connection con = DBconnector.ConnectDb();
         try {
-            ResultSet rs = con.createStatement().executeQuery("SELECT id,nameDicpline,hours,formaOtchensti FROM dicpline where LoginTeacher=" + "'" + ControllerLoginTeacher.Login + "'");
+            ResultSet rs = con.createStatement().executeQuery("SELECT nameDicpline,hours,formaOtchensti FROM dicpline where LoginTeacher=" + "'" + ControllerLoginTeacher.Login + "'");
 
             while (rs.next()) {
-                observableList.add(new Dicpline(rs.getString("nameDicpline"), rs.getInt("hours"), rs.getString("formaOtchensti"),rs.getInt("id")));
+                observableList.add(new Dicpline(rs.getString("nameDicpline"), rs.getInt("hours"), rs.getString("formaOtchensti")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -182,7 +183,7 @@ public class ControllerDicpline {
         formotchet.setCellValueFactory(new PropertyValueFactory<>("formaOtchensti"));
         hours.setCellValueFactory(new PropertyValueFactory<>("hours"));
         name.setCellValueFactory(new PropertyValueFactory<>("nameDicpline"));
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
         TableDicpline.setItems(observableList);
     }
 
