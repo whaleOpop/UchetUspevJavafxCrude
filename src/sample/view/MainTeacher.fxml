@@ -36,5 +36,6 @@
          </font>
       </Label>
       <Button fx:id="group" layoutX="37.0" layoutY="286.0" mnemonicParsing="false" text="Группа" />
+      <Button fx:id="back" layoutX="20.0" layoutY="363.0" mnemonicParsing="false" style="-fx-font-family: Rostov;" text="Назад" />
    </children>
 </AnchorPane>

@@ -73,7 +73,7 @@ public class ControllerGroup {
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     cons = DriverManager.getConnection("jdbc:mysql://localhost/ucheb_prackt?serverTimezone=UTC", "root", "77322850nN%");
-                    prst = cons.prepareStatement("  UPDATE `ucheb_prackt`.`group` SET `NameGroup` = '"+namel.getText()+"' WHERE (`NameGroup` = '"+ids+"')");
+                    prst = cons.prepareStatement("  UPDATE `ucheb_prackt`.`group` SET `NameGroup` = '"+namel.getText()+"' WHERE (`NameGroup` = '"+TableDicpline.getSelectionModel().getSelectedItem().getNameGroup()+"')");
 
                     prst.executeUpdate();
                     TableDicpline.getItems().clear();
@@ -134,7 +134,7 @@ public class ControllerGroup {
                     Connection cons;
                     PreparedStatement prst;
                     PreparedStatement prstUcheb;
-
+                    PreparedStatement prstUspev;
 
                     try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -148,7 +148,10 @@ public class ControllerGroup {
                         for (int i = 0; i < 25; i++) {
                             random_number1 = (a + (int) (Math.random() * b)) + i;
                             prstUcheb = cons.prepareStatement("INSERT INTO `ucheb_prackt`.`student` (`Login`, `numberZachetki`, `Name`, `Family`, `poBatike`, `NameGroup`, `YearPostupleny`, `FormObuch`, `Password`) VALUES ('" + namel.getText()+ random_number1 + "', 'Number', 'Name', 'Family', 'Otchestvo', '" + namel.getText() + "', '1', 'FormObuch', 'Password')");
+                            prstUspev = cons.prepareStatement("INSERT INTO uspev (LoginStudent, Ocenka) VALUES ('"+namel.getText()+ random_number1+"','"+"0"+"')");
+
                             prstUcheb.executeUpdate();
+                            prstUspev.executeUpdate();
 
                         }
 

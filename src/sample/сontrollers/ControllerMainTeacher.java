@@ -37,9 +37,26 @@ public class ControllerMainTeacher {
     private Button group;
     @FXML
     private Button Uchebplan;
-
+    @FXML
+    private Button back;
     @FXML
     void initialize() {
+        back.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/sample.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            back.getScene().getWindow().hide();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Главное меню");
+            stage.show();
+        });
         System.out.println("kekw "+ControllerLoginTeacher.Login);
         Connection con;
         PreparedStatement prst;
@@ -83,6 +100,24 @@ public class ControllerMainTeacher {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Дисциплина");
+            stage.show();
+            stage.setResizable(false);
+        });
+        Otcenky.setOnAction(event -> {
+            Otcenky.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/OcenkyTeacher.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Студент");
             stage.show();
             stage.setResizable(false);
         });

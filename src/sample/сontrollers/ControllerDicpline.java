@@ -87,7 +87,7 @@ public class ControllerDicpline {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 cons = DriverManager.getConnection("jdbc:mysql://localhost/ucheb_prackt?serverTimezone=UTC", "root", "77322850nN%");
-                prst = cons.prepareStatement(" UPDATE dicpline SET nameDicpline = '"+namel.getText()+"', `hours` = '"+hourl.getText()+"', `formaOtchensti` = '"+otchetl.getText()+"' WHERE (`id` = '"+namel.getText()+"')");
+                prst = cons.prepareStatement(" UPDATE dicpline SET nameDicpline = '"+namel.getText()+"', `hours` = '"+hourl.getText()+"', `formaOtchensti` = '"+otchetl.getText()+"' WHERE (`nameDicpline` = '"+TableDicpline.getSelectionModel().getSelectedItem().getNameDicpline().toString()+"')");
                 prst.executeUpdate();
                 TableDicpline.getItems().clear();
                 updateTable();

@@ -5,11 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.сontrollers.ControllerLoginStud">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.сontrollers.ControllerLoginStud">
    <children>
       <Label layoutX="276.0" layoutY="57.0" prefHeight="17.0" prefWidth="50.0" text="Студент" />
       <TextField fx:id="log" layoutX="226.0" layoutY="115.0" promptText="Логин" />
       <TextField fx:id="password" layoutX="226.0" layoutY="188.0" promptText="Пароль" />
       <Button fx:id="login" layoutX="275.0" layoutY="244.0" mnemonicParsing="false" text="Войти" />
+      <Button fx:id="back" layoutX="14.0" layoutY="363.0" mnemonicParsing="false" style="-fx-font-family: Rostov;" text="Назад" />
    </children>
 </AnchorPane>

@@ -51,7 +51,8 @@ public class ControllerUchebPlan {
 
     @FXML
     private TableColumn<UchebPlan, String> name;
-
+    @FXML
+    private TableColumn<UchebPlan, String> Dicpline;
     @FXML
     private TextField namel;
 
@@ -147,10 +148,10 @@ public class ControllerUchebPlan {
     private void updateTable() {
         Connection con = DBconnector.ConnectDb();
         try {
-            ResultSet rs = con.createStatement().executeQuery("SELECT NameSpec,Semectr,uchebplan.id FROM ucheb_prackt.uchebplan inner join dicpline on uchebplan.nameDicpline=dicpline.nameDicpline where dicpline.LoginTeacher=" + "'" + ControllerLoginTeacher.Login + "'");
+            ResultSet rs = con.createStatement().executeQuery("SELECT NameSpec,Semectr,uchebplan.nameDicpline,uchebplan.id FROM uchebplan inner join dicpline on uchebplan.nameDicpline=dicpline.nameDicpline where dicpline.LoginTeacher=" + "'" + ControllerLoginTeacher.Login + "'");
 
             while (rs.next()) {
-                observableList.add(new UchebPlan(rs.getString("NameSpec"), rs.getInt("Semectr"), rs.getString("id").toString()));
+                observableList.add(new UchebPlan(rs.getString("id").toString(),rs.getString("NameSpec"),rs.getString("nameDicpline"), rs.getInt("Semectr")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -159,6 +160,8 @@ public class ControllerUchebPlan {
         semestr.setCellValueFactory(new PropertyValueFactory<>("Semectr"));
         name.setCellValueFactory(new PropertyValueFactory<>("NameSpec"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        Dicpline.setCellValueFactory(new PropertyValueFactory<>("nameDicpline"));
         TableDicpline.setItems(observableList);
+
     }
 }

@@ -26,7 +26,25 @@ public class ControllerLoginStud {
     private TextField password;
     static String Login;
     @FXML
+    private Button back;
+    @FXML
     void initialize() {
+        back.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/sample.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            back.getScene().getWindow().hide();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Главное меню");
+            stage.show();
+        });
         login.setOnAction(actionEvent -> {
             System.out.println("нажатие");
             Connection con;

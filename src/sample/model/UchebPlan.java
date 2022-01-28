@@ -3,22 +3,17 @@ package sample.model;
 public class UchebPlan {
     private String id;
     private String NameSpec;
-    private Integer idDicpline;
+    private String nameDicpline;
     private Integer Semectr;
 
-    public UchebPlan(String id, String nameSpec, Integer idDicpline, Integer semectr) {
+    public UchebPlan(String id, String nameSpec, String namedicpline, Integer semectr) {
         this.id = id;
         this.NameSpec = nameSpec;
-        this.idDicpline = idDicpline;
+        this.nameDicpline = namedicpline;
         this.Semectr = semectr;
     }
 
-    public UchebPlan(String nameSpec, int semectr, String id) {
-        this.id = id;
-        this.NameSpec = nameSpec;
 
-        this.Semectr = semectr;
-    }
 
     public String getId() {
         return id;
@@ -36,12 +31,12 @@ public class UchebPlan {
         NameSpec = nameSpec;
     }
 
-    public Integer getIdDicpline() {
-        return idDicpline;
+    public String getNameDicpline() {
+        return nameDicpline;
     }
 
-    public void setIdDicpline(Integer idDicpline) {
-        this.idDicpline = idDicpline;
+    public void setNameDicpline(String nameDicpline) {
+        this.nameDicpline = nameDicpline;
     }
 
     public Integer getSemectr() {
