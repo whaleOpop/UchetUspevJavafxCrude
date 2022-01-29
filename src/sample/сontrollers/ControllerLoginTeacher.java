@@ -31,11 +31,30 @@ public class ControllerLoginTeacher {
 
     @FXML
     private TextField pass;
+
     static String Login;
     @FXML
     private Button back;
     @FXML
+    private Button reg;
+    @FXML
     void initialize() {
+        reg.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/view/regStud.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            back.getScene().getWindow().hide();
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(new Scene(root));
+            stage.setTitle("Главное меню");
+            stage.show();
+        });
         back.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/sample/view/sample.fxml"));
@@ -61,7 +80,12 @@ public class ControllerLoginTeacher {
             ResultSet rs;
             if (log.getText().isEmpty() || pass.getText().isEmpty()) {
 
-                System.out.println("пустя  стр");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Упс");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Заполните все поля");
+                alert.showAndWait();
+                System.out.println("error");
             } else {
                 try {
                     System.out.println("запрос бд");

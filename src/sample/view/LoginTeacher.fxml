@@ -12,5 +12,6 @@
       <TextField fx:id="pass" layoutX="226.0" layoutY="188.0" promptText="Пароль" />
       <Button fx:id="login" layoutX="274.0" layoutY="255.0" mnemonicParsing="false" text="Войти" />
       <Button fx:id="back" layoutX="14.0" layoutY="363.0" mnemonicParsing="false" style="-fx-font-family: Rostov;" text="Назад" />
+      <Button fx:id="reg" layoutX="70.0" layoutY="363.0" mnemonicParsing="false" style="-fx-font-family: Rostov;" text="Регистрция" />
    </children>
 </AnchorPane>

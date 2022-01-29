@@ -80,7 +80,7 @@ public class ControllerMainStud {
             e.printStackTrace();
         }
 
-        Name.setCellValueFactory(new PropertyValueFactory<>("NameGroup"));
+        Name.setCellValueFactory(new PropertyValueFactory<>("nameDicpline"));
         ocenka.setCellValueFactory(new PropertyValueFactory<>("Ocenka"));
         Table.setItems(observableList);
     }

@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -92,6 +89,11 @@ public class ControllerGroup {
             Connection cons;
             PreparedStatement prst;
             if (namel == null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Упс");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Заполните все поля");
+                alert.showAndWait();
                 System.out.println("error");
             } else {
                 try {
@@ -129,7 +131,12 @@ public class ControllerGroup {
             });
             add.setOnAction(event -> {
                 if (namel.getText().trim().equals("")) {
-                    System.out.println("пошел");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Упс");
+                    alert.setHeaderText("Ошибка");
+                    alert.setContentText("Заполните все поля");
+                    alert.showAndWait();
+                    System.out.println("error");
                 } else {
                     Connection cons;
                     PreparedStatement prst;

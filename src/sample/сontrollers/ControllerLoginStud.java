@@ -27,6 +27,7 @@ public class ControllerLoginStud {
     static String Login;
     @FXML
     private Button back;
+
     @FXML
     void initialize() {
         back.setOnAction(event -> {
@@ -52,7 +53,12 @@ public class ControllerLoginStud {
             ResultSet rs;
             if (log.getText().isEmpty() || password.getText().isEmpty()) {
 
-                System.out.println("пустя  стр");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Упс");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Заполните все поля");
+                alert.showAndWait();
+                System.out.println("error");
             } else {
                 try {
                     System.out.println("запрос бд");

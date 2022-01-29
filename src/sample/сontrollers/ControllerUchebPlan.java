@@ -11,10 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -83,7 +80,13 @@ public class ControllerUchebPlan {
             Connection cons;
             PreparedStatement prst;
             if(ids==null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Упс");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Заполните все поля");
+                alert.showAndWait();
                 System.out.println("error");
+
             }else {
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
@@ -105,6 +108,11 @@ public class ControllerUchebPlan {
             Connection cons;
             PreparedStatement prst;
             if(namel.equals("")||otchetl.equals("")){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Упс");
+                alert.setHeaderText("Ошибка");
+                alert.setContentText("Заполните все поля");
+                alert.showAndWait();
                 System.out.println("error");
             }else {
 
